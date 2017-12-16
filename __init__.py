@@ -25,6 +25,9 @@ class Rel(object):
 		self.file_path = path.abspath(file_path)
 		self.rel_dir = path.dirname(self.file_path) if not path.isdir(file_path) else file_path
 
+	def __str__(self):
+		return 'dirname: %s file_path: %s'%(self.rel_dir, self.file_path)
+
 	def join(self, *args):
 		return path.join(self.rel_dir, *args)
 
