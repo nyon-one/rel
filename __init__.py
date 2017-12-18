@@ -1,5 +1,6 @@
 from os import path
 import os
+import json
 
 class Doc(object):
 	def __init__(self, dest_path):
@@ -19,6 +20,15 @@ class Document(Doc):
 			read = r.read()
 			read = read.strip()
 			return read
+
+	def read_json(self):
+		with self.open_func('r') as r:
+			load = json.load(r)
+		return load
+
+	def write_json(self, _dict):
+		with self.open_func('a') as w:
+			json.dump(_dict, w)
 
 class Rel(object):
 	def __init__(self, file_path):
